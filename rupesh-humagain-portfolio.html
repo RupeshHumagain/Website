@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rupesh Humagain — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&amp;family=DM+Sans:ital,wght@0,400;0,500;1,400&amp;display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red: #c0392b;
+      --red-dark: #922b21;
+      --red-light: #e74c3c;
+      --bg: #0e0808;
+      --bg2: #180c0c;
+      --card: #1e0e0e;
+      --border: rgba(192,57,43,0.18);
+      --text: #f0e8e6;
+      --muted: #9a7070;
+      --accent: #e8cfc8;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 6rem;
+    }
+
+    body {
+      font-family: "DM Sans", "Segoe UI", Tahoma, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 4rem;
+      background: rgba(14,8,8,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    nav .logo {
+      font-family: "Outfit", sans-serif;
+      font-weight: 900;
+      font-size: 1.3rem;
+      color: var(--text);
+      text-decoration: none;
+    }
+    nav .logo span { color: var(--red); }
+    nav ul { list-style: none; display: flex; gap: 2rem; }
+    nav ul a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav ul a:hover { color: var(--red); }
+
+    /* ── Sections ── */
+    section { padding: 6rem 4rem; max-width: 1200px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.85rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--red);
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+    }
+    h2 {
+      font-family: "Outfit", sans-serif;
+      font-weight: 900;
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      color: var(--text);
+      line-height: 1.05;
+      margin-bottom: 3rem;
+    }
+
+    /* ── Hero ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 6rem;
+      max-width: 100%;
+      padding-left: 8rem;
+      padding-right: 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    #hero::before {
+      content: "";
+      position: absolute;
+      top: -10%; right: -5%;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      border: 2px solid rgba(192,57,43,0.12);
+      pointer-events: none;
+    }
+    #hero::after {
+      content: "";
+      position: absolute;
+      bottom: 5%; right: 10%;
+      width: 350px; height: 350px;
+      border-radius: 50%;
+      border: 1px solid rgba(192,57,43,0.08);
+      pointer-events: none;
+    }
+    .hero-accent {
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 6px;
+      background: var(--red);
+    }
+    .hero-tag {
+      display: inline-block;
+      font-size: 0.85rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 1.5rem;
+    }
+    .hero-name {
+      font-family: "Outfit", sans-serif;
+      font-weight: 900;
+      font-size: clamp(3.5rem, 8vw, 7rem);
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+    }
+    .hero-name span { color: var(--red); }
+    .hero-sub {
+      font-size: clamp(1rem, 1.6vw, 1.3rem);
+      color: var(--accent);
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+    .hero-bio {
+      font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+      color: var(--muted);
+      max-width: 550px;
+      margin-bottom: 2.5rem;
+      line-height: 1.7;
+    }
+    .hero-shell {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(250px, 0.75fr);
+      gap: 2.5rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+      width: 100%;
+    }
+    .hero-card {
+      background: linear-gradient(145deg, rgba(30, 14, 14, 0.95), rgba(14, 8, 8, 0.95));
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 1.1rem;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+    }
+    .hero-photo {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      border-radius: 18px;
+      display: block;
+      border: 1px solid rgba(192, 57, 43, 0.25);
+      background: #140909;
+    }
+    .hero-badge {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.35rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid rgba(192, 57, 43, 0.25);
+      color: var(--accent);
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    .hero-meta-list {
+      list-style: none;
+      display: grid;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+    .hero-meta-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .hero-meta-list strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+    .hero-location {
+      font-size: 0.9rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-bottom: 2rem;
+    }
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .divider-line { height: 2px; width: 60px; background: var(--red); }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 2rem;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary { background: var(--red); color: #fff; }
+    .btn-primary:hover { background: var(--red-light); }
+    .btn-outline { background: transparent; color: var(--text); border: 1.5px solid var(--border); margin-left: 1rem; }
+    .btn-outline:hover { border-color: var(--red); color: var(--red); }
+
+    /* ── About ── */
+    #about { border-top: 1px solid var(--border); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .about-text p { color: var(--muted); margin-bottom: 1.2rem; font-size: 1.05rem; line-height: 1.75; }
+    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .stat-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+    .stat-card .stat-val {
+      font-family: "Outfit", sans-serif;
+      font-weight: 900;
+      font-size: 2rem;
+      color: var(--red);
+      margin-bottom: 0.25rem;
+    }
+    .stat-card .stat-label { font-size: 0.85rem; color: var(--muted); }
+
+    /* ── Skills ── */
+    #skills { border-top: 1px solid var(--border); }
+    .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+    .skill-group h3 {
+      font-family: "Outfit", sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--red);
+      margin-bottom: 1.5rem;
+    }
+    .skill-item { margin-bottom: 1.25rem; }
+    .skill-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+    }
+    .skill-name { font-size: 0.95rem; color: var(--text); font-weight: 500; }
+    .skill-pct { font-family: "Outfit", sans-serif; font-weight: 900; font-size: 1rem; color: var(--red); }
+    .skill-bar {
+      height: 6px;
+      background: var(--card);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .skill-fill {
+      height: 100%;
+      background: var(--red);
+      border-radius: 999px;
+    }
+    .lang-row {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+    .lang-tag {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 0.4rem 1.1rem;
+      font-size: 0.85rem;
+      color: var(--accent);
+    }
+
+    /* ── Education ── */
+    #education { border-top: 1px solid var(--border); }
+    .edu-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .edu-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .edu-card.highlight {
+      border-color: var(--red);
+      background: var(--red);
+    }
+    .edu-card .edu-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      padding: 0.3rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+    .edu-card.highlight .edu-badge { border-color: rgba(255,255,255,0.3); color: rgba(255,255,255,0.75); }
+    .edu-card h3 {
+      font-family: "Outfit", sans-serif;
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+    }
+    .edu-card .edu-school { font-size: 0.9rem; color: var(--muted); margin-bottom: 0.75rem; }
+    .edu-card.highlight .edu-school { color: rgba(255,255,255,0.7); }
+    .edu-card .edu-acc { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.5rem; }
+    .edu-card.highlight .edu-acc { color: rgba(255,255,255,0.7); }
+    .edu-card .edu-gpa {
+      font-family: "Outfit", sans-serif;
+      font-weight: 900;
+      font-size: 1.5rem;
+      color: var(--red);
+    }
+    .edu-card.highlight .edu-gpa { color: #fff; }
+    .edu-card .edu-divider {
+      width: 40px; height: 2px;
+      background: var(--red);
+      margin: 0.75rem 0;
+    }
+    .edu-card.highlight .edu-divider { background: rgba(255,255,255,0.4); }
+
+    /* ── Projects ── */
+    #projects { border-top: 1px solid var(--border); }
+    .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2rem;
+      transition: border-color 0.2s;
+    }
+    .project-card:hover { border-color: rgba(192,57,43,0.5); }
+    .project-card .proj-number {
+      font-family: "Outfit", sans-serif;
+      font-weight: 900;
+      font-size: 0.75rem;
+      color: var(--red);
+      letter-spacing: 0.15em;
+      margin-bottom: 1rem;
+    }
+    .project-card h3 {
+      font-family: "Outfit", sans-serif;
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--text);
+      margin-bottom: 0.6rem;
+    }
+    .project-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.65; margin-bottom: 1rem; }
+    .tech-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .tech-tag {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(192,57,43,0.12);
+      color: var(--accent);
+      border: 1px solid rgba(192,57,43,0.25);
+    }
+
+    /* ── Goals ── */
+    #goals { border-top: 1px solid var(--border); }
+    .goals-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+    .goal-group h3 {
+      font-family: "Outfit", sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--red);
+      margin-bottom: 1.25rem;
+    }
+    .goal-item {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+      align-items: flex-start;
+    }
+    .goal-dot {
+      width: 8px; height: 8px;
+      background: var(--red);
+      border-radius: 50%;
+      margin-top: 0.55rem;
+      flex-shrink: 0;
+    }
+    .goal-item-text strong { display: block; color: var(--text); font-size: 0.95rem; margin-bottom: 0.2rem; }
+    .goal-item-text span { color: var(--muted); font-size: 0.875rem; }
+    .career-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .career-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+    }
+    .career-card strong { display: block; color: var(--text); font-size: 0.95rem; margin-bottom: 0.2rem; }
+    .career-card span { color: var(--muted); font-size: 0.8rem; }
+
+    /* ── Achievements ── */
+    #achievements { border-top: 1px solid var(--border); }
+    .ach-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+    .ach-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+    }
+    .ach-card .ach-val {
+      font-family: "Outfit", sans-serif;
+      font-weight: 900;
+      font-size: 1.8rem;
+      color: var(--red);
+      margin-bottom: 0.5rem;
+    }
+    .ach-card .ach-title { font-weight: 700; color: var(--text); font-size: 0.95rem; margin-bottom: 0.4rem; }
+    .ach-card .ach-desc { color: var(--muted); font-size: 0.8rem; line-height: 1.5; }
+
+    /* ── Contact ── */
+    #contact { border-top: 1px solid var(--border); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+    .contact-info .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .contact-icon {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--card);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-icon svg { width: 18px; height: 18px; fill: none; stroke: var(--red); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .contact-item-text .ci-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--muted); margin-bottom: 0.2rem; }
+    .contact-item-text a, .contact-item-text span { color: var(--text); font-size: 0.95rem; font-weight: 500; text-decoration: none; }
+    .contact-item-text a:hover { color: var(--red); }
+    .socials { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.55rem 1.2rem;
+      border-radius: 999px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .social-btn:hover { border-color: var(--red); color: var(--red); }
+    .contact-note {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--red);
+      border-radius: 10px;
+      padding: 2rem;
+    }
+    .contact-note h3 {
+      font-family: "Outfit", sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+    }
+    .contact-note p { color: var(--muted); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1rem; }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 2.5rem 4rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+    footer span { color: var(--red); }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      nav ul { gap: 1rem; }
+      #hero { padding-left: 2rem; padding-right: 2rem; }
+      section { padding: 4rem 1.5rem; }
+      .hero-shell { grid-template-columns: 1fr; }
+      .about-grid, .skills-grid, .edu-list, .projects-grid, .goals-grid, .contact-grid { grid-template-columns: 1fr; }
+      .ach-grid { grid-template-columns: 1fr 1fr; }
+      .career-cards { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      nav ul { display: none; }
+      .hero-name { font-size: 3rem; }
+      .ach-grid { grid-template-columns: 1fr; }
+      .btn-outline { margin-left: 0; margin-top: 0.75rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#hero" class="logo">Rupesh<span>.</span></a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#goals">Goals</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-accent"></div>
+    <div class="hero-shell">
+      <div>
+        <p class="hero-tag">Personal Portfolio &nbsp;·&nbsp; Nepal</p>
+        <h1 class="hero-name">Rupesh<br /><span>Humagain</span></h1>
+        <div class="divider"><div class="divider-line"></div><p class="hero-sub">Aspiring MIS Student | Future Business Technology Professional</p></div>
+        <p class="hero-bio">I'm a recent +2 grad from Nepal with a passion for Management Information Systems. I genuinely love figuring out how technology and business can work together to fix real problems. Still learning, always curious.</p>
+        <div class="hero-location">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          Kathmandu, Nepal
+        </div>
+        <a href="mailto:huamagainrupesh@gmail.com" class="btn btn-primary">Get In Touch</a>
+        <a href="https://www.linkedin.com/in/rupesh-humagain-69676741a" target="_blank" rel="noopener noreferrer" class="btn btn-outline">LinkedIn &rarr;</a>
+      </div>
+      <div class="hero-card">
+        <img class="hero-photo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='1000' viewBox='0 0 800 1000'%3E%3Crect width='800' height='1000' rx='40' fill='%23130808'/%3E%3Ccircle cx='400' cy='360' r='220' fill='%23c0392b'/%3E%3Ccircle cx='400' cy='330' r='170' fill='%23e8cfc8'/%3E%3Cpath d='M225 820c40-170 125-250 175-250s135 80 175 250' fill='%23f0e8e6'/%3E%3Cpath d='M300 280c0-120 80-200 100-200s100 80 100 200v80H300z' fill='%230e0808'/%3E%3Ctext x='400' y='930' text-anchor='middle' font-family='Arial, sans-serif' font-size='56' font-weight='700' fill='%23e8cfc8'%3ERH%3C/text%3E%3C/svg%3E" alt="Portrait illustration of Rupesh Humagain" />
+        <div class="hero-badge">Profile Snapshot</div>
+        <ul class="hero-meta-list">
+          <li><strong>Role</strong><span>Future MIS Professional</span></li>
+          <li><strong>Focus</strong><span>Business + Technology</span></li>
+          <li><strong>Location</strong><span>Kathmandu, Nepal</span></li>
+          <li><strong>Status</strong><span>Open for internships</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="section-label">Background</p>
+    <h2>About Me</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>So, a little about me — I just finished my +2 at Paragon Academy with a GPA of 3.43/4.00. Commerce stream: Accounting, Economics, Computer Science. Honestly, it was that mix of business and tech that made me realize what I want to do.</p>
+        <p>I'm genuinely passionate about Management Information Systems. Not just as a degree, but as a whole way of thinking — how do you use technology to make businesses work smarter? How does data actually drive decisions? That stuff keeps me up at night (in a good way).</p>
+        <p>My plan is to pursue a Bachelor's in MIS, pick up real-world experience through internships, and eventually become someone who can bridge the gap between technical teams and business leaders. I've got the drive — now I need the opportunity.</p>
+        <p>Outside of academics, I spend time learning Python, exploring AI tools, and reading up on digital transformation. Nepal has so much potential for tech growth — I'd love to be part of that someday.</p>
+      </div>
+      <div class="about-stats">
+        <div class="stat-card">
+          <div class="stat-val">3.43</div>
+          <div class="stat-label">Higher Secondary GPA (out of 4.00)</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-val">95%</div>
+          <div class="stat-label">Continuous Learning Drive</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-val">6+</div>
+          <div class="stat-label">Projects Completed</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-val">MIS</div>
+          <div class="stat-label">Planned Bachelor's Degree</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <p class="section-label">Capabilities</p>
+    <h2>Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <h3>Technical Skills</h3>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">Internet Research</span><span class="skill-pct">95%</span></div><div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">Microsoft Excel</span><span class="skill-pct">90%</span></div><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">File &amp; Document Management</span><span class="skill-pct">90%</span></div><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">Microsoft Word &amp; PowerPoint</span><span class="skill-pct">88%</span></div><div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">Data Entry &amp; Documentation</span><span class="skill-pct">88%</span></div><div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">Google Docs, Sheets &amp; Slides</span><span class="skill-pct">85%</span></div><div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">Digital Communication</span><span class="skill-pct">85%</span></div><div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">AI Productivity Tools</span><span class="skill-pct">82%</span></div><div class="skill-bar"><div class="skill-fill" style="width:82%"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">Basic Data Analysis</span><span class="skill-pct">65%</span></div><div class="skill-bar"><div class="skill-fill" style="width:65%"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">Basic Python Programming</span><span class="skill-pct">60%</span></div><div class="skill-bar"><div class="skill-fill" style="width:60%"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">Basic Database Concepts</span><span class="skill-pct">55%</span></div><div class="skill-bar"><div class="skill-fill" style="width:55%"></div></div></div>
+        <div class="lang-row">
+          <span class="lang-tag">Nepali — Native</span>
+          <span class="lang-tag">English — Professional</span>
+          <span class="lang-tag">Hindi — Conversational</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Professional Skills</h3>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">Continuous Learning</span><span class="skill-pct">95%</span></div><div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">Adaptability</span><span class="skill-pct">90%</span></div><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">Time Management</span><span class="skill-pct">88%</span></div><div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">Attention to Detail</span><span class="skill-pct">85%</span></div><div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">Problem Solving</span><span class="skill-pct">85%</span></div><div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">Team Collaboration</span><span class="skill-pct">85%</span></div><div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">Critical Thinking</span><span class="skill-pct">82%</span></div><div class="skill-bar"><div class="skill-fill" style="width:82%"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">Analytical Thinking</span><span class="skill-pct">80%</span></div><div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">Communication Skills</span><span class="skill-pct">80%</span></div><div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">Leadership Potential</span><span class="skill-pct">75%</span></div><div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <p class="section-label">Academic Background</p>
+    <h2>Education</h2>
+    <div class="edu-list">
+      <div class="edu-card">
+        <span class="edu-badge">Completed</span>
+        <h3>Secondary Education (SEE)</h3>
+        <p class="edu-school">Kankai Secondary School</p>
+        <div class="edu-divider"></div>
+        <p class="edu-acc">Foundational Education</p>
+        <div class="edu-gpa">3.06 / 4.00</div>
+      </div>
+      <div class="edu-card highlight">
+        <span class="edu-badge">Completed</span>
+        <h3>Higher Secondary +2</h3>
+        <p class="edu-school">Paragon Academy</p>
+        <div class="edu-divider"></div>
+        <p class="edu-acc">Commerce · Accounting · Economics · Computer Science</p>
+        <div class="edu-gpa">3.43 / 4.00</div>
+      </div>
+      <div class="edu-card">
+        <span class="edu-badge" style="border-color:rgba(192,57,43,0.4);color:var(--red);">Planned</span>
+        <h3>Bachelor of MIS</h3>
+        <p class="edu-school">Management Information Systems</p>
+        <div class="edu-divider"></div>
+        <p class="edu-acc">Bridging technology &amp; business leadership</p>
+        <div class="edu-gpa" style="font-size:1.1rem;color:var(--muted);">Upcoming</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <p class="section-label">Work &amp; Learning</p>
+    <h2>Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="proj-number">01</div>
+        <h3>Personal Portfolio Website</h3>
+        <p>A premium, responsive portfolio built with React, TypeScript, Tailwind CSS, and Framer Motion. Features a custom dark theme system and smooth scroll animations.</p>
+        <div class="tech-tags"><span class="tech-tag">React</span><span class="tech-tag">TypeScript</span><span class="tech-tag">Tailwind CSS</span><span class="tech-tag">Framer Motion</span></div>
+      </div>
+      <div class="project-card">
+        <div class="proj-number">02</div>
+        <h3>Data Analytics Dashboard</h3>
+        <p>Visual data exploration projects using advanced spreadsheets and business analytics tools to uncover trends and actionable insights from raw datasets.</p>
+        <div class="tech-tags"><span class="tech-tag">Excel</span><span class="tech-tag">Data Visualization</span><span class="tech-tag">Analytics</span></div>
+      </div>
+      <div class="project-card">
+        <div class="proj-number">03</div>
+        <h3>Python Learning Projects</h3>
+        <p>A collection of beginner Python scripts and automation exercises aimed at building strong programming fundamentals and computational thinking.</p>
+        <div class="tech-tags"><span class="tech-tag">Python</span><span class="tech-tag">Algorithms</span><span class="tech-tag">Automation</span></div>
+      </div>
+      <div class="project-card">
+        <div class="proj-number">04</div>
+        <h3>Business Analysis Case Studies</h3>
+        <p>In-depth case study analyses exploring modern business problems and proposing technology-driven solutions to improve efficiency.</p>
+        <div class="tech-tags"><span class="tech-tag">Strategy</span><span class="tech-tag">Research</span><span class="tech-tag">Documentation</span></div>
+      </div>
+      <div class="project-card">
+        <div class="proj-number">05</div>
+        <h3>MIS Academic Research</h3>
+        <p>Academic papers and case studies examining the role of Management Information Systems in modern corporate environments and digital transformation.</p>
+        <div class="tech-tags"><span class="tech-tag">MIS</span><span class="tech-tag">Research</span><span class="tech-tag">Digital Transformation</span></div>
+      </div>
+      <div class="project-card">
+        <div class="proj-number">06</div>
+        <h3>AI Productivity Workflows</h3>
+        <p>Experiments with generative AI tools and prompt engineering to boost learning, research efficiency, and personal productivity.</p>
+        <div class="tech-tags"><span class="tech-tag">AI</span><span class="tech-tag">Prompt Engineering</span><span class="tech-tag">Productivity</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GOALS -->
+  <section id="goals">
+    <p class="section-label">Looking Ahead</p>
+    <h2>Career Goals</h2>
+    <div class="goals-grid">
+      <div class="goal-group">
+        <h3>Short-term</h3>
+        <div class="goal-item">
+          <div class="goal-dot"></div>
+          <div class="goal-item-text">
+            <strong>Bachelor's in MIS</strong>
+            <span>Enroll in a quality program to build advanced technical and business skills.</span>
+          </div>
+        </div>
+        <div class="goal-item">
+          <div class="goal-dot"></div>
+          <div class="goal-item-text">
+            <strong>Gain Practical Experience</strong>
+            <span>Secure internships to apply classroom knowledge in real business environments.</span>
+          </div>
+        </div>
+        <div class="goal-item">
+          <div class="goal-dot"></div>
+          <div class="goal-item-text">
+            <strong>Skill Development</strong>
+            <span>Build strong foundations in programming, database management, and business analytics.</span>
+          </div>
+        </div>
+      </div>
+      <div class="goal-group">
+        <h3>Long-term</h3>
+        <div class="career-cards">
+          <div class="career-card">
+            <strong>Business Analyst</strong>
+            <span>Identifying business needs and determining technology-driven solutions.</span>
+          </div>
+          <div class="career-card">
+            <strong>IT Consultant</strong>
+            <span>Advising organizations on best use of information technology.</span>
+          </div>
+          <div class="career-card">
+            <strong>Product Manager</strong>
+            <span>Guiding the development and success of technology products.</span>
+          </div>
+          <div class="career-card">
+            <strong>Technology Entrepreneur</strong>
+            <span>Founding a tech-driven business that creates real impact.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACHIEVEMENTS -->
+  <section id="achievements">
+    <p class="section-label">Milestones</p>
+    <h2>Achievements</h2>
+    <div class="ach-grid">
+      <div class="ach-card">
+        <div class="ach-val">3.43</div>
+        <div class="ach-title">Higher Secondary Graduate</div>
+        <div class="ach-desc">Completed +2 from Paragon Academy with a strong academic record.</div>
+      </div>
+      <div class="ach-card">
+        <div class="ach-val">100%</div>
+        <div class="ach-title">Continuous Learner</div>
+        <div class="ach-desc">Expanding knowledge through self-guided projects and research every day.</div>
+      </div>
+      <div class="ach-card">
+        <div class="ach-val">24/7</div>
+        <div class="ach-title">Technology Enthusiast</div>
+        <div class="ach-desc">Passionate explorer of AI, data analytics, and digital transformation.</div>
+      </div>
+      <div class="ach-card">
+        <div class="ach-val">MIS</div>
+        <div class="ach-title">Future MIS Professional</div>
+        <div class="ach-desc">Committed to bridging business needs and tech solutions in Nepal and beyond.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <p class="section-label">Get In Touch</p>
+    <h2>Contact</h2>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,14 22,4"/></svg>
+          </div>
+          <div class="contact-item-text">
+            <div class="ci-label">Email</div>
+            <a href="mailto:huamagainrupesh@gmail.com">huamagainrupesh@gmail.com</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.1a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div class="contact-item-text">
+            <div class="ci-label">Phone</div>
+            <a href="tel:+9779820777842">+977 9820777842</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          </div>
+          <div class="contact-item-text">
+            <div class="ci-label">Location</div>
+            <span>Nepal</span>
+          </div>
+        </div>
+        <div class="socials">
+          <a href="https://www.linkedin.com/in/rupesh-humagain-69676741a" target="_blank" rel="noopener noreferrer" class="social-btn">LinkedIn</a>
+          <a href="https://github.com/RupeshHumagain" target="_blank" rel="noopener noreferrer" class="social-btn">GitHub</a>
+          <a href="https://www.instagram.com/rupesh_humagai/" target="_blank" rel="noopener noreferrer" class="social-btn">Instagram</a>
+          <a href="https://www.facebook.com/rupesh.humagain.56" target="_blank" rel="noopener noreferrer" class="social-btn">Facebook</a>
+        </div>
+      </div>
+      <div class="contact-note">
+        <h3>Open to Opportunities</h3>
+        <p>I'm actively looking for internships, part-time roles, or collaborative projects where I can apply my MIS knowledge and grow alongside experienced professionals.</p>
+        <p>Whether you have a project idea, a learning opportunity, or just want to connect — feel free to reach out. I respond to every message.</p>
+        <a href="mailto:huamagainrupesh@gmail.com" class="btn btn-primary">Send a Message</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Built with passion &nbsp;&mdash;&nbsp; <span>Rupesh Humagain</span> &nbsp;&copy; 2025 &nbsp;&middot;&nbsp; Nepal</p>
+  </footer>
+
+</body>
+</html>
